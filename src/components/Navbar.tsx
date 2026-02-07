@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const navItems = [
   { label: "Problem", href: "#problem" },
@@ -13,6 +14,7 @@ const navItems = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,9 +66,10 @@ const Navbar = () => {
               <Button
                 size="sm"
                 className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
-                onClick={() => scrollToSection("#problem")}
+                onClick={() => navigate('/auth')}
               >
-                Get Started
+                <LogIn className="h-4 w-4 mr-2" />
+                Login
               </Button>
             </div>
 
@@ -115,9 +118,13 @@ const Navbar = () => {
                   <Button
                     size="lg"
                     className="w-full bg-gradient-to-r from-primary to-accent"
-                    onClick={() => scrollToSection("#problem")}
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      navigate('/auth');
+                    }}
                   >
-                    Get Started
+                    <LogIn className="h-4 w-4 mr-2" />
+                    Login / Sign Up
                   </Button>
                 </motion.div>
               </div>

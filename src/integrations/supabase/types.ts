@@ -14,7 +14,81 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      medicines: {
+        Row: {
+          barcode: string | null
+          created_at: string
+          description: string | null
+          dosage: string
+          expiry_date: string | null
+          id: string
+          name: string
+          precautions: string | null
+          reminder_enabled: boolean
+          schedule_times: string[]
+          updated_at: string
+          used_for: string | null
+          user_id: string
+        }
+        Insert: {
+          barcode?: string | null
+          created_at?: string
+          description?: string | null
+          dosage: string
+          expiry_date?: string | null
+          id?: string
+          name: string
+          precautions?: string | null
+          reminder_enabled?: boolean
+          schedule_times?: string[]
+          updated_at?: string
+          used_for?: string | null
+          user_id: string
+        }
+        Update: {
+          barcode?: string | null
+          created_at?: string
+          description?: string | null
+          dosage?: string
+          expiry_date?: string | null
+          id?: string
+          name?: string
+          precautions?: string | null
+          reminder_enabled?: boolean
+          schedule_times?: string[]
+          updated_at?: string
+          used_for?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
