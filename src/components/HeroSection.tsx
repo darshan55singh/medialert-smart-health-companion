@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Shield, Bell, Pill } from "lucide-react";
+import { ArrowDown, Shield, Bell, Pill, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+  
   const scrollToSection = () => {
     document.getElementById("problem")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -71,8 +74,17 @@ const HeroSection = () => {
           >
             <Button
               size="lg"
-              onClick={scrollToSection}
+              onClick={() => navigate('/auth')}
               className="group px-8 py-6 text-lg bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-all duration-300 shadow-[var(--shadow-button)]"
+            >
+              Get Started
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={scrollToSection}
+              className="group px-8 py-6 text-lg"
             >
               How It Works
               <ArrowDown className="ml-2 w-5 h-5 group-hover:translate-y-1 transition-transform" />
