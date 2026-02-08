@@ -45,6 +45,25 @@ const Auth: React.FC = () => {
     }
   };
 
+  const validatePassword = (password: string): { valid: boolean; message: string } => {
+    if (password.length < 8) {
+      return { valid: false, message: 'Password must be at least 8 characters' };
+    }
+    if (!/[A-Z]/.test(password)) {
+      return { valid: false, message: 'Password must contain at least one uppercase letter' };
+    }
+    if (!/[a-z]/.test(password)) {
+      return { valid: false, message: 'Password must contain at least one lowercase letter' };
+    }
+    if (!/[0-9]/.test(password)) {
+      return { valid: false, message: 'Password must contain at least one number' };
+    }
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      return { valid: false, message: 'Password must contain at least one special character (!@#$%^&*...)' };
+    }
+    return { valid: true, message: '' };
+  };
+
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -57,10 +76,11 @@ const Auth: React.FC = () => {
       return;
     }
 
-    if (signupPassword.length < 6) {
+    const passwordValidation = validatePassword(signupPassword);
+    if (!passwordValidation.valid) {
       toast({
         title: 'Weak Password',
-        description: 'Password must be at least 6 characters',
+        description: passwordValidation.message,
         variant: 'destructive',
       });
       return;
