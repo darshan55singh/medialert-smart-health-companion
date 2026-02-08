@@ -35,10 +35,10 @@ const Footer = () => {
           >
             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-foreground text-sm">
               <GraduationCap className="w-4 h-4 text-primary" />
-              <span>Engineering Student Project</span>
+              <span>Made by Darshan Singh</span>
             </div>
             <p className="text-muted-foreground text-sm max-w-md">
-              This is an educational prototype designed to demonstrate a smart healthcare solution concept.
+              A smart healthcare solution designed to help you manage your medications effectively.
             </p>
           </motion.div>
 
